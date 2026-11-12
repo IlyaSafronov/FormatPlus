@@ -3789,3 +3789,215 @@ Slides Index
 
 .text-slide-number {
   color: #abc; }
+
+/* Нативное позиционирование панели навигации WebSlides */
+#navigation {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  display: flex !important;
+  gap: 10px !important;
+  z-index: 99999 !important;
+}
+
+#navigation a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  font-size: 1.2rem !important;
+  transition: background 0.2s ease !important;
+}
+
+#navigation a:hover {
+  background: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* =0=========================================================================
+   ФИНАЛЬНЫЙ МОБИЛЬНЫЙ АДАПТИВ (Экраны до 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  /* 1. Заставляем главный контейнер WebSlides и секции занять ВСЮ ширину экрана */
+  #webslides {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-x: hidden !important;
+  }
+
+  #webslides > section,
+  .slide {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 30px 20px 90px 20px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+  }
+
+  /* 2. Растягиваем внутренний контейнер wrap на всю ширину */
+  #webslides .wrap,
+  .wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 3. Превращаем сетки и колонки в вертикальные блоки */
+  #webslides .grid,
+  #webslides .flexblock {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 16px !important;
+    margin: 0 !important;
+  }
+
+  #webslides .grid > .column,
+  #webslides .flexblock > li {
+    width: 100% !important;
+    flex: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 4. Заголовки и картинки */
+  #webslides h1 { font-size: 2.2rem !important; line-height: 1.2 !important; }
+  #webslides h2 { font-size: 1.8rem !important; line-height: 1.3 !important; }
+  #webslides img { max-width: 100% !important; height: auto !important; }
+
+  /* 5. Идеальное выравнивание капсулы и стрелок по центру */
+  #navigation {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    z-index: 999999 !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    padding: 10px 24px !important;
+    border-radius: 30px !important;
+    backdrop-filter: blur(5px) !important;
+    width: auto !important;
+  }
+
+  #navigation a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    color: #ffffff !important;
+    font-size: 1.2rem !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   ЖЕСТКИЙ СБРОС СТРУКТУРЫ WEBSLIDES НА МОБИЛЬНЫХ (До 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Сбрасываем главный контейнер слайдера */
+  #webslides {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+  /* Сбрасываем ограничения каждого слайда */
+  #webslides > section,
+  .slide,
+  section.aligncenter {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    padding: 40px 16px 90px 16px !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+  }
+
+  /* Сбрасываем центрирующие обертки контента, которые сжимают макет */
+  #webslides .wrap,
+  .wrap,
+  .wrap.size-50,
+  .wrap.size-60,
+  .wrap.size-70,
+  .wrap.size-80,
+  .embed {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Выравнивание панели навигации со стрелками по центру */
+  #navigation {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    z-index: 999999 !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    padding: 10px 24px !important;
+    border-radius: 30px !important;
+    backdrop-filter: blur(5px) !important;
+    width: auto !important;
+  }
+
+  #navigation a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    color: #ffffff !important;
+    font-size: 1.2rem !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}

@@ -214,10 +214,44 @@
   </div>
 </section>
   </article>
+
+  <!-- Родная панель навигации WebSlides -->
+    <div id="navigation">
+      <a href="#" title="Предыдущий слайд" class="prev">
+        <i class="fa-solid me-1 fa-chevron-left"></i>
+      </a>
+      <a href="#" title="Следующий слайд" class="next">
+        <i class="fa-solid me-1 fa-chevron-right"></i>
+      </a>
+    </div>
+  </article>
+</main>
+
 </main>
   <script src="./script.js"></script>
   <script>
-    window.ws = new WebSlides();
+    document.addEventListener('DOMContentLoaded', function() {
+      // Инициализируем WebSlides
+      window.ws = new WebSlides();
+
+      // Привязываем клики к стрелкам
+      const prevBtn = document.querySelector('#navigation .prev');
+      const nextBtn = document.querySelector('#navigation .next');
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.ws.goPrev();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.ws.goNext();
+        });
+      }
+    });
   </script>
 </body>
 </html>
